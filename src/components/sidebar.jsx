@@ -1,7 +1,18 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 function Sidebar() {
+  const { user } = useContext(AuthContext);
   return (
     <div className="sidebar">
-      <h2>Chat App</h2>
+      <div className="user-info">
+  <img
+    src={user.photoURL}
+    alt="Profile"
+    className="profile-pic"
+  />
+
+  <h3>{user.displayName}</h3>
+</div>
 
       <input
         type="text"
