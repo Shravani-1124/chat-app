@@ -107,3 +107,9 @@
   font-size: 18px;
   text-align: center;
 }
+.sender-name {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.7;
+}

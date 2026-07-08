@@ -1,9 +1,16 @@
-function MessageBubble({ text, isSent }) {
+function MessageBubble({ text, senderName, isSent }) {
   return (
     <div className={`message ${isSent ? "sent" : "received"}`}>
-      {text}
+      <div className="sender-name">
+        {senderName}
+      </div>
+
+      <div>
+        {text}
+      </div>
     </div>
-  )
+  );
 }
 
-export default MessageBubble
+export default MessageBubble;
+
