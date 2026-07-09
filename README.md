@@ -41,6 +41,38 @@ A modern real-time chat application built using **React**, **Vite**, and **Fireb
 - Displayed authenticated user information in the sidebar
 - Organized authentication logic into reusable components
 
+### Week 5 - User Presence
+
+- Integrated Firebase Realtime Database for user presence tracking
+- Displayed real-time online/offline status in the sidebar
+- Automatically updated user status on login and disconnect
+- Created a Firestore users collection to manage user profiles
+- Improved the chat experience with live presence indicators
+
+### Week 6 - Typing Indicator
+
+- Added real-time typing indicators using Firebase Realtime Database
+- Tracked typing activity within individual chat rooms
+- Displayed when other users are actively typing
+- Synced typing status instantly across connected clients
+- Enhanced the real-time messaging experience
+
+### Week 7 - Emoji Support
+
+- Integrated an emoji picker into the message input
+- Added support for sending emojis within chat messages
+- Implemented a toggleable emoji selection panel
+- Improved user interaction and message personalization
+- Enhanced the overall chat experience
+
+### Week 8 - Deployment & Security
+
+- Secured Firestore with authentication-based security rules
+- Restricted message creation to authenticated users
+- Moved Firebase configuration to environment variables
+- Deployed the application using Firebase Hosting
+- Published a live production version of the chat application
+
 ---
 
 ## Tech Stack
@@ -80,6 +112,9 @@ src/
 ```
 
 ---
+## Live Demo
+
+https://chat-app-1e027.web.app
 
 ## Author
 
