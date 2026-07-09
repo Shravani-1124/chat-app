@@ -1,18 +1,28 @@
 import { useState, useContext } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase";
+import { db , rtdb} from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { useParams } from "react-router-dom";
+import { ref, set } from "firebase/database";
+import EmojiPicker from "emoji-picker-react";
+
 
 function MessageInput() {
   const [text, setText] = useState("");
+  const [showPicker, setShowPicker] = useState(false);
   const { user } = useContext(AuthContext);
+  const { roomId } = useParams();
+   const typingRef = ref(
+  rtdb,
+  `typing/${roomId}/${user?.uid}`
+);
 
   const handleSend = async () => {
     if (!text.trim()) return;
 
     try {
       await addDoc(
-        collection(db, "rooms", "general", "messages"),
+        collection(db, "rooms", roomId, "messages"),
         {
           text: text,
           senderId: user.uid,
@@ -23,6 +33,10 @@ function MessageInput() {
       );
 
       setText("");
+      await set(typingRef, {
+  typing: false,
+  name: user.displayName,
+});
       console.log("Message sent!");
     } catch (error) {
       console.error(error);
@@ -31,11 +45,26 @@ function MessageInput() {
 
   return (
     <div className="message-input">
+      <button
+  onClick={() => setShowPicker(!showPicker)}
+>
+  😀
+</button>
+{showPicker && (
+  <EmojiPicker />
+)}
        <input
   type="text"
   placeholder="Type a message..."
   value={text}
-  onChange={(e) => setText(e.target.value)}
+  onChange={async (e) => {
+  setText(e.target.value);
+
+  await set(typingRef, {
+    typing: true,
+    name: user.displayName,
+  });
+}}
   onKeyDown={(e) => {
     if (e.key === "Enter") {
       handleSend();
