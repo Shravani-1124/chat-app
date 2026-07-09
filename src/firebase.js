@@ -4,13 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCusFes7Mn3S45T8jwvP7lHAimPGU4Ohq0",
-  authDomain: "chat-app-1e027.firebaseapp.com",
-  projectId: "chat-app-1e027",
-  storageBucket: "chat-app-1e027.firebasestorage.app",
-  messagingSenderId: "697040374330",
-  databaseURL: "https://chat-app-1e027-default-rtdb.asia-southeast1.firebasedatabase.app",
-  appId: "1:697040374330:web:78891be8b1e47c4b704303"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
 };
 
 const app = initializeApp(firebaseConfig);
